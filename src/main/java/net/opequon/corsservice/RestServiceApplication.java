@@ -18,7 +18,7 @@ public class RestServiceApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/greeting-javaconfig").allowedOrigins("http://localhost:9000");
+				registry.addMapping("/greeting-javaconfig").allowedOrigins("http://localhost:9000","https://static-cors-test.apps.cfh-test.sandbox1479.opentlc.com");
 			}
 		};
 	}
