@@ -24,7 +24,7 @@ public class GreetingController {
 		return new Greeting(counter.incrementAndGet(), String.format(template, name));
 	}*/
 
-	@CrossOrigin(origins = {"http://127.0.0.1","https://static-cors-test.apps.cfh-test.sandbox1479.opentlc.com"})
+	@CrossOrigin(origins = {"http://127.0.0.1","https://static.corstest.apps.cfh-test.sandbox1479.opentlc.com"})
 	@GetMapping("/greeting")
     public Greeting greeting(@RequestParam(required=false, defaultValue="World") String name, @RequestHeader Map<String, String> headers, HttpServletRequest hsr) {
 		System.out.println("==== in greeting ====");
