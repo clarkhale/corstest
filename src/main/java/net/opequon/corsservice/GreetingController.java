@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.util.UriComponentsBuilder;
+import javax.servlet.http.HttpServletRequest;
+
 
 @RestController
 public class GreetingController {
@@ -23,10 +26,11 @@ public class GreetingController {
 
 	@CrossOrigin(origins = {"http://127.0.0.1","https://static-cors-test.apps.cfh-test.sandbox1479.opentlc.com"})
 	@GetMapping("/greeting")
-    public Greeting greeting(@RequestParam(required=false, defaultValue="World") String name, @RequestHeader Map<String, String> headers) {
+    public Greeting greeting(@RequestParam(required=false, defaultValue="World") String name, @RequestHeader Map<String, String> headers, HttpServletRequest hsr) {
 		System.out.println("==== in greeting ====");
+		System.out.println("Request URI" + hsr.getRequestURI());
         headers.forEach((key, value) -> {
-	        System.out.println(String.format("Header '%s' = %s", key, value));
+			System.out.println(String.format("Header '%s' = %s", key, value));
 	    });
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
 	}
