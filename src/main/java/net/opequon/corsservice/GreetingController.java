@@ -28,7 +28,8 @@ public class GreetingController {
 	@GetMapping("/greeting")
     public Greeting greeting(@RequestParam(required=false, defaultValue="World") String name, @RequestHeader Map<String, String> headers, HttpServletRequest hsr) {
 		System.out.println("==== in greeting ====");
-		System.out.println("Request URI" + hsr.getRequestURI());
+		System.out.println("Request URL " + hsr.getRequestURL());
+		System.out.println("Request URI " + hsr.getRequestURI());
         headers.forEach((key, value) -> {
 			System.out.println(String.format("Header '%s' = %s", key, value));
 	    });
